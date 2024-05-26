@@ -6,7 +6,7 @@ Dữ liệu vào
 Một số nguyên là tổng số giây
 
 Dữ liệu ra
-Kết quả đổi được theo dạnggiờ:phút:giây
+Kết quả đổi được theo dạng giờ:phút:giây
 
 Ví dụ
 Input #1 
@@ -17,7 +17,7 @@ Output #1
 1:6:50
 '''
 input = int(input())
-h = input/3600
-p = (h - int(h)) * 60
-s = (p - int(p)) * 60 
-print(f"{int(h)}:{int(p)}:{int(s)}")
+h = input // 3600 #chia lấy nguyên
+m = (input % 3600) // 60 
+s = (input % 3600) % 60 #chia lấy dư
+print(f'{h}:{m}:{s}')
