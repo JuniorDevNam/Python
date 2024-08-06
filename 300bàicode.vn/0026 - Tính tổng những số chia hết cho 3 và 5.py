@@ -23,7 +23,7 @@ https://www.facebook.com/300baicode.vn/posts/117067670748306
 '''
 n = int(input())
 start = n if n%5 == 0 else n - n%5
-sum = []
+sum = 0
 for x in range(5,start + 1,5):
     if x%3 == 0:
         sum += x
