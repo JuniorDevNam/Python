@@ -5,7 +5,7 @@ def nt(x):
     if x < 1:
         return 0
     d = 0
-    for i in range(2,n):
+    for i in range(2,x):
         if x%i == 0:
             d += 1
         if d >= 1:
