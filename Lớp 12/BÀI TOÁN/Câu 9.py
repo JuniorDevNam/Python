@@ -7,14 +7,11 @@ Yêu cầu:
 Bài 9: Viết chương trình Python tính số lượng các số dương liên tiếp có tổng lớn nhất.
 '''
 a=[2, -4, 1, 9, -3, 6, 3, -2, 6, 8]
-tong = 0
-temp = 0
-so_lg = 0
-temp2 = 0
+tong = []
+temp = []
 for x in range(len(a)):
     if a[x] > 0:
-        temp += a[x]
-        temp2 += 1
+        temp.append(a[x])
     if a[x] < 0:
         if temp > tong:
             tong -= tong

@@ -12,7 +12,6 @@ so_nhi = 0
 for x in a:
     if x > so_nhi:
         if x != max(a):
-            so_nhi -= so_nhi
-            so_nhi += x
+            so_nhi = x
 vi_tri = [i+1 for i in range(len(a)) if a[i] == so_nhi]
 print("Phần tử lớn thứ nhì của danh sách là {} và các vị trí của các phần tử đó là {}".format(so_nhi,", ".join(str(x) for x in vi_tri)))
