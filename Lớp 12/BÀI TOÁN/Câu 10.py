@@ -14,7 +14,6 @@ for i in range(len(a)-1):
         temp += 1
     else:
         if temp > so_lg:
-            so_lg -= so_lg
-            so_lg += temp
+            so_lg = temp
         temp -= (temp-1)
-print("Số phần tử liên tiếp đan dấu là {}".format(so_lg))
+print("Số phần tử liên tiếp đan dấu nhiều nhất là {}".format(so_lg))

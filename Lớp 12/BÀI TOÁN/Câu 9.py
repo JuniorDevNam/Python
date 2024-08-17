@@ -12,12 +12,12 @@ temp = []
 for x in range(len(a)):
     if a[x] > 0:
         temp.append(a[x])
+        if a[x] == a[-1]:
+            if sum(temp) > sum(tong):
+                tong = temp.copy()
+    
     if a[x] < 0:
-        if temp > tong:
-            tong -= tong
-            tong += temp
-            so_lg -= so_lg
-            so_lg += temp2
-        temp -= temp
-        temp2 -= temp2
-print("Số lượng các số dương liên tiếp có tổng lớn nhất là {}".format(so_lg))
+        if sum(temp) > sum(tong):
+            tong = temp.copy()
+        temp.clear()
+print("Số lượng các số dương liên tiếp có tổng lớn nhất là {}".format(len(tong)))

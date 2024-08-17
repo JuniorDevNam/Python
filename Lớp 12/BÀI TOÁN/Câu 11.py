@@ -13,7 +13,6 @@ for i in range(len(a)-1):
         tmp += 1
     else:
         if tmp > s:
-            s -= (s-1)
-            s += tmp
+            s = tmp
         tmp -= (tmp-1)
 print(s)
