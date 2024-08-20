@@ -10,7 +10,6 @@ def max_tong(a):
     for x in a:
         if x > 0:
             temp.append(x)
-            print(temp)
             if x == a[-1]:
                 if sum(temp) > sum(tong):
                     tong = temp.copy()
@@ -18,7 +17,6 @@ def max_tong(a):
         if x < 0:
             if sum(temp) > sum(tong):
                 tong = temp.copy()
-                print(tong)
             temp.clear()
     return sum(tong)
 temp = []
@@ -26,6 +24,8 @@ ds = []
 for x in range(len(a)):
     if a[x] > 0:
         temp.append(a[x])
+        if sum(temp) == max_tong(a):
+            ds.append(temp.copy())
     if a[x] < 0:
         if sum(temp) == max_tong(a):
             ds.append(temp.copy())
