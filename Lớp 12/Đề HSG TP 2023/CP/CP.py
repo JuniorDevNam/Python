@@ -1,3 +1,6 @@
+import os, sys
+filein = os.path.join(sys.path[0],"CP.INP")
+
 def snt(n):
     if n <= 1:
         return False
@@ -8,7 +11,8 @@ def snt(n):
 
 def scp(n):
     return n**0.5 == int(n**0.5)
-
+def ketqua(kq):
+    fileout = 
 s = list(map(int, input().strip().split()))
 a, b = s[0], s[1]
 scp_list, scpdb = [], 0
