@@ -9,12 +9,10 @@ B = list(map(int,i[2].strip().split()))
 k = list(map(int,i[3].strip().split()))
 A = sorted(A, reverse=True)
 B = sorted(B, reverse=True)
-print(A, B)
 kq = []
 for i in range(q):
     x = k[i]
     max = sum(A[:x])
-    print(max)
     kq.append(max)
 with open(fileout, 'w') as file:
     file.write(str(" ".join(str(x) for x in kq)))
