@@ -10,8 +10,19 @@ def giaithua(num):
         return 1
     else:
         return num * giaithua(num - 1)
-t = 1
+kq = []
 for x in np:
     N, P = map(int,x.split())
+    ans = 0
     Nphay = giaithua(N)
-    while 
+    if N < P:
+        kq.append(ans)
+    else:
+        for j in range(P, N+1, P):
+            x = j
+            while x % P == 0:
+                ans += 1
+                x //= P
+        kq.append(ans)
+with open(fileout, 'w') as file:
+    file.write('\n'.join(str(x) for x in kq))
