@@ -1,6 +1,6 @@
 import sys, os
-filein = os.path.join(sys.path[0],'chiamang.py')
-fileout = os.path.join(sys.path[0],'chiamang.py')
+filein = os.path.join(sys.path[0],'chiamang.inp')
+fileout = os.path.join(sys.path[0],'chiamang.out')
 with open(filein,'r') as file:
     i = file.readlines()
 def ketqua(kq):
