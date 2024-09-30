@@ -6,5 +6,5 @@ for x in list(map(int,A.split())):
         ds[x] += 1
     else:
         ds[x] = 1
-for key, value in my_dict.items():
+for key, value in ds.items():
     print(f'{key}: {value}')
