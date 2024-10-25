@@ -5,7 +5,7 @@ def tho(s,t):
     r = t * (N-s) + t
     return r
 for i in range(3,N):
-    s = i+3
+    s = i+4
     print(i,s)
     if s <= N:
         c.append(tho(s,t))
