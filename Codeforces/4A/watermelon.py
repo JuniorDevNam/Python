@@ -1,3 +1,5 @@
+#Get WA at Test 5
+
 w = int(input())
 half = w/2
 if half == int(half):
