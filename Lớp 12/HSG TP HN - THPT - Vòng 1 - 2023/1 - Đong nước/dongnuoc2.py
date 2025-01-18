@@ -12,22 +12,24 @@ def min_steps(n):
     if n == 4:
         return 2
     cnt = 0
+    trigger = False
     while n > 0:
         if n % 5 == 0:
             cnt += n // 5
             break
-        elif n >= 5:
-            n -= 5
-            cnt += 1
-        elif n % 2 == 0:
-            cnt += n // 2
-            break
+        elif n >= 5 and trigger == False:
+            cnt += n // 5
+            n %= 5
         elif n % 3 == 0:
             cnt += n // 3
             break
-        else:
-            return -1
-
+        elif n % 2 == 0:
+            cnt += n // 2
+            break
+        elif n < 2:
+            n += 5
+            cnt -= 1
+            trigger = True
     return cnt
 
 n = int(input())

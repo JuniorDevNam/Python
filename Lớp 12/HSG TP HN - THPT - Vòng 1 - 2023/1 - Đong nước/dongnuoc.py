@@ -1,12 +1,11 @@
+import time
+start_time = time.time()
+
 import sys, os
 input_file = os.path.join(sys.path[0],'dongnuoc.inp')
 output_file = os.path.join(sys.path[0],'dongnuoc.out')
 sys.stdin = open(input_file, 'r')
 sys.stdout = open(output_file, 'w')
-
-import time
-start_time = time.time()
-
 n = int(input())
 cnt = 0
 if n > 5:
@@ -38,7 +37,6 @@ if n > 5:
         print(cnt)
 elif n == 5 or n == 2 or n == 3: print(1)
 elif n == 4: print(2)
-else: print(-1)
 end_time = time.time()
 print(f"{end_time - start_time} giây")
 

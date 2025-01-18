@@ -1,39 +1,58 @@
 import sys, os
-input_file = os.path.join(sys.path[0],'khudancu.inp')
-output_file = os.path.join(sys.path[0],'khudancu.out')
-sys.stdin = open(input_file, 'r')
-sys.stdout = open(output_file, 'w')
-M, N, D, K = map(int,input().split())
-MN = [input() for _ in range(M)]
-P = []
-Mall = []
-P_in_rangeD_Mall = []
-All_D_poss = []
-for i in range(1,D+1):
-    All_D_poss.append((i,i))
-    All_D_poss.append((-i,i))
-    All_D_poss.append((i,-i))
-    All_D_poss.append((-i,-i))
-    All_D_poss.append((i,0))
-    All_D_poss.append((-i,0))
-    All_D_poss.append((0,i))
-    All_D_poss.append((0,-i))
-for x in range(M):
-    for y in range(N):
-        if MN[x][y] == 'P':
-            P.append((x,y))
-        if MN[x][y] == 'M':
-            Mall.append((x,y))
-for m in Mall:
-    for d in All_D_poss:
-        md = tuple(a + b for a, b in zip(m,d))
-        if md in P:
-            P_in_rangeD_Mall.append(md)
-ud = set(P_in_rangeD_Mall)
-cd = {item: P_in_rangeD_Mall.count(item) for item in ud}
-#print(All_D_poss,'\n',P,'\n',P_in_rangeD_Mall,'\n',ud,'\n',cd)
-cnt = 0
-for city, value in cd.items():
-    if value >= K:
-        cnt += 1
-print(cnt)
+
+# Đọc file input/output
+def read_input_output():
+    input_file = os.path.join(sys.path[0], 'khudancu.inp')
+    output_file = os.path.join(sys.path[0], 'khudancu.out')
+    sys.stdin = open(input_file, 'r')
+    sys.stdout = open(output_file, 'w')
+def dfs(grid, x, y, visited):
+    if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or visited[x][y]:
+        return
+    visited[x][y] = True
+    # Duyệt các ô lân cận (trái, phải, trên, dưới)
+    dfs(grid, x + 1, y, visited)
+    dfs(grid, x - 1, y, visited)
+    dfs(grid, x, y + 1, visited)
+    dfs(grid, x, y - 1, visited)
+# Hàm chính
+def main():
+    read_input_output()
+    M, N, D, K = map(int, input().split())
+    grid = [input().strip() for _ in range(M)]
+
+    Mall = []
+    P = set()
+
+    # Duyệt toàn bộ lưới để tìm 'M' và 'P'
+    for x in range(M):
+        for y, char in enumerate(grid[x]):
+            if char == 'M':
+                Mall.append((x, y))
+            elif char == 'P':
+                P.add((x, y))
+
+    # Tập hợp các tọa độ trong phạm vi Manhattan D
+    All_D_poss = [
+        (dx, dy)
+        for dx in range(-D, D + 1)
+        for dy in range(-D, D + 1)
+        if abs(dx) + abs(dy) <= D
+    ]
+
+    # Đếm số lượng P bị ảnh hưởng bởi ít nhất K M
+    cnt = 0
+    for px, py in P:
+        influence_count = 0
+        for dx, dy in All_D_poss:
+            mx, my = px + dx, py + dy
+            if 0 <= mx < M and 0 <= my < N and grid[mx][my] == 'M':
+                influence_count += 1
+                if influence_count >= K:  # Không cần kiểm tra thêm
+                    cnt += 1
+                    break
+
+    print(cnt)
+
+if __name__ == "__main__":
+    main()
