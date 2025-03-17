@@ -1,16 +1,11 @@
-n, q = map(int,input().split())
-cay = list(map(int,input().split()))
-p = [input() for _ in range(q)]
+def solve():
+    n, q = map(int, input().split())
+    h = list(map(int, input().split()))
 
-for x in p:
-    l, r = int(x[0]), int(x[-1])
-    tong_hieu = 0
-    #lọc cây thỏa mãn khoảng [l, r]
-    cay1 = []
-    for i in cay:
-        if l <= i <= r:
-            cay1.append(i)
-    #duyệt hàng cây mới
-    for j in range(1,len(cay1)):
-        tong_hieu += abs(cay1[j]-cay1[j-1])
-    print(tong_hieu)
+    for _ in range(q):
+        l, r = map(int, input().split())
+        f = [x for x in h if l <= x <= r]
+        d = sum(abs(f[i] - f[i-1]) for i in range(1, len(f))) if len(f) > 1 else 0
+        print(d)
+
+solve()
