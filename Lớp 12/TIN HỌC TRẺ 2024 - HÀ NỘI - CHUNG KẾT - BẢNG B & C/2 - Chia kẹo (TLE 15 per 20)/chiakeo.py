@@ -1,9 +1,11 @@
-import os, sys, bisect
-input_file = os.path.join(sys.path[0], "chiakeo.inp")
-output_file = os.path.join(sys.path[0], "chiakeo.out")
-sys.stdin = open(input_file, "r")
-sys.stdout = open(output_file, "w")
+#import os, sys
+#input_file = os.path.join(sys.path[0], "chiakeo.inp")
+#output_file = os.path.join(sys.path[0], "chiakeo.out")
+#sys.stdin = open(input_file, "r")
+#sys.stdout = open(output_file, "w")
 
+
+import bisect
 #N - số lượng học sinh
 #Q - số lượt phát kẹo
 N, Q = map(int, input().split())

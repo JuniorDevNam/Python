@@ -5,8 +5,12 @@ sys.stdin = open(input_file, "r")
 sys.stdout = open(output_file, "w")
 
 N = int(input())
-
-a = int(N**0.5)
-b = N // a
-c = abs(a - b)
-print(c)
+if N == 1:
+    print(0)
+    exit()
+for a in range(int(N**0.5), 0, -1):
+    if N % a == 0:
+        b = N // a
+        c = abs(a - b)
+        print(c)
+        break
