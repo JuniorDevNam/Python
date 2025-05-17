@@ -1,17 +1,24 @@
+import os, sys
+input_file = os.path.join(sys.path[0], "bsr.INP")
+sys.stdin = open(input_file, 'r')
+
+
 m, n = map(int, input().split())
 table = [list(map(int, input().split())) for _ in range(m)]
 count = 0
 
-for x1 in range(m):
-    arr = [0] * n #tổng các phần tử từ hàng x1 đến hàng x2
-    for x2 in range(x1, m):
+for row1 in range(m):
+    sums = [0] * n
+    for row2 in range(row1, m):
         for col in range(n):
-            arr[col] += table[x2][col]
-        prefix = 0
-        freq = {0: 1}
-        for val in arr:
-            prefix = (prefix + val) % 9
-            count += freq.get(prefix, 0)
-            freq[prefix] = freq.get(prefix, 0) + 1
+            sums[col] += table[row2][col]
+        prefix = [0]
+        for val in sums:
+            prefix.append((prefix[-1] + val) % 9)
+        freq = {}
+        for p in prefix:
+            freq[p] = freq.get(p, 0) + 1
+        for v in freq.values():
+            count += v * (v - 1) // 2
 
 print(count)

@@ -14,8 +14,6 @@ for right in range(n):
     if len(freq) > k:
         left += 1
         freq[a[left]] -= 1
-        if any(value > 1 for value in freq.values()):
-        
         if freq[a[left]] == 0:
             del freq[a[left]]
         

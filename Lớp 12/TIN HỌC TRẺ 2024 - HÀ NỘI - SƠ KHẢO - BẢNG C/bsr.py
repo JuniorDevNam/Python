@@ -1,3 +1,7 @@
+import os, sys
+input_file = os.path.join(sys.path[0], "bsr.INP")
+sys.stdin = open(input_file, 'r')
+
 m, n = map(int, input().split())
 table = [ list(map(int, input().split())) for _ in range(m) ]
 prefix = [[0] * (n) for _ in range(m)]
