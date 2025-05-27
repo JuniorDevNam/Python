@@ -6,14 +6,15 @@ sys.stdout = open(output_file, 'w')
 N, L, R = map(int, input().split())
 A = list(map(int, input().split()))
 A.sort()
-As = list(set(A))
-r, broke = 0, False
+found = False
 for i in range(N):
     for j in range(i+1, N):
-        r = A[i] + A[j]
-        if L <= r <= R:
-            broke = True
+        s = A[i] + A[j]
+        if L <= s <= R:
+            print(s)
+            found = True
             break
-    if broke:
+    if found:
         break
-print(r)
+if not found:
+    print(-1)
